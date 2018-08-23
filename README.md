@@ -27,7 +27,7 @@ crawl book, novel, pictures and something else from internet :see_no_evil:  :not
  ![csv file](https://github.com/ChloeandShawn/somePythonScrapy/blob/master/demo/data.gif)
  
  ## lagou.com jobs' detail spider
- input job keywords to crawl jobs' detail and save to sqlite3 database
+ input job keywords to crawl jobs' detail and save to sqlite3 database,
  default ShenZhen city
  
  :boom: preview 
@@ -41,7 +41,8 @@ crawl book, novel, pictures and something else from internet :see_no_evil:  :not
  # you can choose change keyword in file or input the keyword
  # and later, you can query job detail with sqlite3 database
  ```
- 
+ query lagoujobs database
+ ![query](https://github.com/ChloeandShawn/somePythonSpider/blob/master/demo/query.png)
  
  ## douban books spider :books:
  crawl douban books info and save data to mysqlite3 database
@@ -57,3 +58,5 @@ crawl book, novel, pictures and something else from internet :see_no_evil:  :not
  ```
  ![douban](https://github.com/ChloeandShawn/somePythonScrapy/blob/master/demo/douban.gif)
  
+ query doubanbooks database
+ ![querybooks](https://github.com/ChloeandShawn/somePythonSpider/raw/master/demo/querybooks.png)
