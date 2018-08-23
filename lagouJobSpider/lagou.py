@@ -79,7 +79,7 @@ def getLaGouJobs(keyword, first, i, results):
 		results = jobs['content']['positionResult']['result']
 		resultSize = jobs['content']['positionResult']['resultSize']
 
-		print('请求页工作信息数量：', resultSize)
+		print('请求页工作信息数量：', resultSize, '\r\n')
 
 		for result in results:
 			try:
@@ -96,7 +96,8 @@ def getLaGouJobs(keyword, first, i, results):
 				jobAddress = soup.select('#job_detail dd.job-address > input')[2]['value']
 				jobUrl = basic	
 				
-				print('{0}\r{1}\r{2}\r{3}\r{4}\r{5}\r\n-----------------------'.format(jobTitle, jobCompany, jobRequest, jobDetail, jobAddress, jobUrl))
+				print(('{0}\r{1}\r{2}\r{3}\r{4}\r{5}\r\n-----------------------'.format(jobTitle, jobCompany, jobRequest, jobDetail, jobAddress, jobUrl).encode('GBK','ignore').decode('GBK')))
+				#encode 又decode 是因为 gbk无法转换一些Unicode中的字符，所以需要ignore，再decode，cmd中运行的话job title 和 job company 都会被ignore掉，建议使用sublime的来运行
 				insertDB(jobTitle, jobCompany, jobRequest, jobDetail, jobAddress, jobUrl)
 				#print('insert data successfully!')
 			except Exception as e:
@@ -113,8 +114,10 @@ if __name__ == '__main__':
 	conn = sqlite3.connect(db)
 	cursor = conn.cursor()
 	creatDB(db)
-
-	#keyword = 'python 爬虫实习'
+	print('注意，cmd中运行会忽略掉job title & job company\n因为Unicode类型的字符中，包含了一些无法转换为GBK编码的一些字符\n建议在sublime或其他环境中运行\r\n')
+	
+	#keyword = 'python 爬虫'
 	keyword = input('input keyword: ')
 	getLaGouJobs(keyword, first='true', i=1, results=True)
 	existDB()
+	#queryDB()
