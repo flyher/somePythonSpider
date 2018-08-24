@@ -13,7 +13,7 @@ crawl book, picture and something else interesting from internet :see_no_evil:  
  :boom: preview
  ![51jobs](https://github.com/ChloeandShawn/somePythonSpider/raw/master/demo/51jobs.png)
 
- ### steps
+ ### *steps*
  1. search jobs in 51jobs.com and copy url
  2. run the scrapy
  3. paste 51job url
@@ -32,7 +32,7 @@ crawl book, picture and something else interesting from internet :see_no_evil:  
  :boom: preview 
  ![lagou](https://github.com/ChloeandShawn/somePythonSpider/blob/master/demo/lagou.png)
  
- ### setps
+ ### *setps*
  ```
  1. cd lagouJobSpider
  2. python run lagou.py 
@@ -44,10 +44,30 @@ crawl book, picture and something else interesting from internet :see_no_evil:  
  ![query](https://github.com/ChloeandShawn/somePythonSpider/blob/master/demo/query.png)
  
  ------
+ ## get proxy spider
+ crawl proxy from xicidaili.com & gatherproxy.com
+ 
+ ### *gatherproxy.com spider*
+ ```
+ cd proxy
+ python getProxy.py
+ ```
+ ![gatherProxy](https://github.com/ChloeandShawn/somePythonSpider/blob/master/demo/getproxy.png)
+ 
+ ### *xicidaili.com spider*
+ ```
+ cd proxy
+ python xici.py
+ input the page number (100 proxies/page)
+ ```
+ :boom: preview, i used pillow to merge this two pictures
+ ![xici](https://github.com/ChloeandShawn/somePythonSpider/blob/master/demo/getxici.png)
+ 
+ ------
  ## douban books spider :books:
  crawl douban books info and save data to mysqlite3 database
  
- ### steps
+ ### *steps*
  1. run douban spider
  2. enter books keyword
  3. enter the number of books you want to save
