@@ -10,7 +10,7 @@ import os
 import re
 import pprint
 import requests
-from lxml import etree
+from multiprocessing import Pool
 
 url = 'http://www.gatherproxy.com/zh/proxylist/country/?c=China' #选取国内的代理，还有其他的keyword
 headers = {
@@ -40,27 +40,33 @@ def getProxy():
 	print(proxyList)
 # getProxy()
 
-def validator():
+def validator(proxy):
 	url = 'http://www.baidu.com'
-	for proxy in proxyList:
-		try:
-			r = requests.get(url, 
-				headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36'}, 
-				proxies = {
-				'http': proxy,
-				'https': proxy,
-				}, timeout = 5)
-			if (r.status_code == requests.codes.ok):
-				valid.append(proxy)
-				print('valid proxy:', proxy)
-			else:
-				print('failed:', proxy)
-		except Exception as e:
-			print('error:', proxy)
-	print('可用代理如下：\n')
-	print(valid)
+	try:
+		r = requests.get(url, 
+			headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36'}, 
+			proxies = {
+			'http': proxy,
+			'https': proxy,
+			}, timeout = 5)
+		if (r.status_code == requests.codes.ok):
+			valid.append(proxy)
+			print('valid proxy:', proxy)
+		else:
+			print('failed:', proxy)
+	except Exception as e:
+		print('error:', proxy)
+
 
 
 if __name__ == '__main__':
 	getProxy()
-	validator()
+	# validator()
+	p = Pool(4)
+	for proxy in proxyList:
+		p.apply_async(validator, args = (proxy,))
+	p.close()
+	p.join()
+	# print('可用代理如下：\n')
+	# print(valid)
+	print('over!')
