@@ -8,22 +8,22 @@
  ```
 ------
 ## Jobs
-- [Lagou.com](#Lagou.com) 
-- [51job.com](#51Job.com)
+- [Lagou.com](#lagoucom) 
+- [51job.com](#51jobcom)
 
 ## Proxy Pool
-* [xicidaili.com](xicidaili.com)
-* [gatherproxy.com](gatherproxy.com)
+* [xicidaili.com](#xicidailicom)
+* [gatherproxy.com](#gatherproxycom)
 
 ## Books info
-* [douban](douban) 
+* [douban](#douban) 
 
 ## Picture
-* [unplash.com](unplash.com)
+* [unplash.com](#unplashcom)
 
 ## Novel
-* [sto.cc](sto.cc)
-* [52shuku.com](52shuku.com)
+* [sto.cc](#stocc)
+* [52shuku.com](#52shukucom)
 
 ------
 ## Lagou.com
@@ -107,16 +107,16 @@ preview, i used pillow to merge this two pictures
  
 ### *steps* 
 ```
-cd book
+cd novel
 python stocc.py
 # paste sto.cc website novel link
 ```
 
 ## 52shuku.com
-使用scrapy 爬虫 52shuku.com的小说，保存成txt文件
+使用scrapy 爬虫 52shuku8.com的小说，保存成txt文件
 
 ### *steps*
 ```
-cd book/52shuku
+cd book/book52shuku
 scrapy crawl get52shuku
 # paste novel link and start download novel to txt file
