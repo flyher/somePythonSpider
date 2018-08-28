@@ -1,15 +1,31 @@
-# some python spider
-crawl book, picture and something else interesting from internet :see_no_evil:  :notebook_with_decorative_cover:
+# Some Python Spider
+从互联网爬取一些实用或者有趣的信息
 
-## install
+## Get Code
 
  ``` 
- git clone https://github.com/ChloeandShawn/somePythonSpider.git
+ git clone https://github.com/Chloe-Y/somePythonSpider.git
  ```
 ------
- ## 51Job.com spider :office:
- crawl 51job.com job detail and sava data to csv file
- 
+## Jobs
+* [Lagou.com](#Lagou) 
+* [51job.com](#51Job)
+
+## Proxy Pool
+* [xicidaili.com]()
+* [gatherproxy.com]()
+
+## Books info
+* [douban]() 
+
+## Picture
+* [unplash.com]()
+
+## Novel
+* [sto.cc]()
+* [52shuku.com]()
+
+
  :boom: preview
  ![51jobs](https://github.com/ChloeandShawn/somePythonSpider/raw/master/demo/51jobs.png)
 
