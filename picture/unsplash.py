@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 # @Date    : 2018-08-29 15:22:26
 # @Author  : Chloe
-# @Link    : http://example.org
+# @Link    : https://api.unsplash.com
 # @Version : 1.0.0
-# @Intro   : 
+# @Intro   : get unsplash photos url via keywords and added to IDM task queue to download
 
 import os
 import json
@@ -18,7 +18,7 @@ headers = {
     'Accept-Version': 'v1'
 }
 
-idm = r'E:\app\Idm\idman_lv\IDMan.exe' #这是IDM的路径
+idm = r'E:\app\Idm\idman_lv\IDMan.exe' #设定你自己IDM的路径
 
 def getPhoto(keyword, page, types):
     for i in range(1, page+1):
@@ -29,10 +29,10 @@ def getPhoto(keyword, page, types):
             href = i['urls'][types]
             name = i['description']
             if name == None:
-                name = str(random.randint(1,99))
+                name = str(random.randint(1,99))#无介绍的图片可以用随机数字代替，方便，一般比较少
             else:
                 name = i['description']
-            call([idm, '/d', href, '/f', 'pictures\\'+name + '.jpg', '/n', '/a'])
+            call([idm, '/d', href, '/f', 'pictures\\'+name + '.jpg', '/n', '/a']) # idm可以设置默认下载文件夹，这是在下载文件夹里面加了一个pictures文件夹
 
 if __name__ == '__main__':
     keyword = input('enter the keyword to search photos: ')
