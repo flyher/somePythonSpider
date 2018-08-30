@@ -19,7 +19,7 @@
 * [douban](#douban) 
 
 ## Picture
-* [unplash.com](#unplashcom)
+* [unsplash.com](#unsplashcom)
 
 ## Novel
 * [sto.cc](#stocc)
@@ -39,10 +39,6 @@ python run lagou.py
 ```
 preview
 ![lagou](https://github.com/Chloe-Y/somePythonSpider/blob/master/demo/lagou.png)
-
-query lagoujobs database
-![query](https://github.com/Chloe-Y/somePythonSpider/blob/master/demo/query.png)
- 
 
 ## 51Job.com
 :honeybee:通过51job链接爬取页面的工作详情，并且保存到csv文件中
