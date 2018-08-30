@@ -5,6 +5,7 @@
 # @Link    : http://www.lagou.com
 # @Version : 1.0.0
 # @Intro   : post搜索关键词和页码，返回发布职业信息id, 套入basic 工作信息链接，收集工作信息，保存至数据库，后续考虑结合代码池，为了不显示爬取太频繁还是太慢了
+# @Update  : 添加多线程，添加代理池
 
 import os
 import time
@@ -13,6 +14,7 @@ import random
 import sqlite3
 import requests
 from bs4 import BeautifulSoup
+#from multiprocessing import Pool
 
 def creatDB(db):
 	try:
@@ -71,7 +73,6 @@ def getLaGouJobs(keyword, first, i, results):
 		'pn': str(i), 
 		'kd': keyword
 		}
-
 		r = requests.post(url, headers = headers, data = data)
 		print('拉钩网请求信息',data)
 
@@ -89,7 +90,7 @@ def getLaGouJobs(keyword, first, i, results):
 				time.sleep(random.random()*3) #休息时间，感觉有点慢，后续结合代理池的好
 				soup = BeautifulSoup(r.text, "lxml")
 
-				jobTitle = result['positionName']
+				jobTitle = soup.select('div.job-name > span.name')[0].get_text()
 				jobCompany = soup.select('div.job-name > div.company')[0].get_text()
 				jobRequest = soup.select('div.position-content-l > dd.job_request > p')[0].get_text().replace('\n','')
 				jobDetail = soup.select('#job_detail > dd.job_bt > div')[0].get_text()
@@ -97,11 +98,11 @@ def getLaGouJobs(keyword, first, i, results):
 				jobUrl = basic	
 				
 				print(('{0}\r{1}\r{2}\r{3}\r{4}\r{5}\r\n-----------------------'.format(jobTitle, jobCompany, jobRequest, jobDetail, jobAddress, jobUrl).encode('GBK','ignore').decode('GBK')))
-				#encode 又decode 是因为 gbk无法转换一些Unicode中的字符，所以需要ignore，再decode，cmd中运行的话job title 和 job company 都会被ignore掉，建议使用sublime的来运行
+				#encode 又decode 是因为 gbk无法转换一些Unicode中的字符，所以需要ignore，再decode，cmd中运行的话job title 和 job company 都会被ignore掉，建议使用sublime或其他环境来运行
 				insertDB(jobTitle, jobCompany, jobRequest, jobDetail, jobAddress, jobUrl)
-				#print('insert data successfully!')
 			except Exception as e:
-				print('获取工作信息页面错误：{}'.format(basic), '\n', e)
+				pass
+				#print('获取工作信息页面错误：{}'.format(basic), e, '\n', r.text)
 		print('one page over!')
 		i += 1
 		first = 'false'
@@ -116,8 +117,8 @@ if __name__ == '__main__':
 	creatDB(db)
 	print('注意，cmd中运行会忽略掉job title & job company\n因为Unicode类型的字符中，包含了一些无法转换为GBK编码的一些字符\n建议在sublime或其他环境中运行\r\n')
 	
-	#keyword = 'python 爬虫'
-	keyword = input('input keyword: ')
-	getLaGouJobs(keyword, first='true', i=1, results=True)
+	keyword = 'python 开发'
+	#keyword = input('input keyword: ')
+	getLaGouJobs(keyword, first = 'true', i = 1, results = True)
 	existDB()
 	#queryDB()
