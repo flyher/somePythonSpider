@@ -19,4 +19,4 @@ def queryDB(db): #后续查看可以使用
 
 if __name__ == '__main__':
 	db = input('input database name: ')
-	queryDB('爬虫.db')
+	queryDB(db)
