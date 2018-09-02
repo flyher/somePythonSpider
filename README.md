@@ -59,6 +59,7 @@ preview
  ```
  在51job.com 查询工作信息，复制链接，爬虫运行后黏贴链接
  ![search](https://github.com/Chloe-Y/somePythonSpider/blob/master/demo/search.gif)
+ 
  爬虫下来的csv文件，需要整理一下
  ![csv file](https://github.com/Chloe-Y/somePythonSpider/blob/master/demo/data.gif)
  
@@ -97,9 +98,9 @@ python echoDownload.py
 # input your user id
 # start download
 ```
-preview
 输入user id 下载
 ![echo](https://github.com/Chloe-Y/somePythonSpider/blob/master/demo/echo.png)
+
 下载如下
 ![echoDL](https://github.com/Chloe-Y/somePythonSpider/blob/master/demo/echoDL.png)
  
