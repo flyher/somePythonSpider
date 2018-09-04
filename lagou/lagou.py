@@ -46,8 +46,9 @@ def queryDB(db): #后续查看可以使用
 		values = cursor.fetchall()
 		for row in values:
 			print('{0}\r{1}\r{2}\r{3}\r{4}\r{5}\r\n-----------------------'.format(row[0], row[1], row[2], row[3],row[4], row[5]))
-
-url = 'https://www.lagou.com/jobs/positionAjax.json?city=%E6%B7%B1%E5%9C%B3&needAddtionalResult=false' #默认深圳地区搜索，如果不是，修改'city=([%\w]+)'里面的Unicode地址编码
+# 广州 %E5%B9%BF%E5%B7%9E
+# 深圳 %E6%B7%B1%E5%9C%B3
+url = 'https://www.lagou.com/jobs/positionAjax.json?city=%E5%B9%BF%E5%B7%9E&needAddtionalResult=false' #默认深圳地区搜索，如果不是，修改'city=([%\w]+)'里面的Unicode地址编码
 headers = {
 'Connection': 'keep-alive',
 'Host': 'www.lagou.com',
@@ -117,7 +118,7 @@ if __name__ == '__main__':
 	creatDB(db)
 	print('注意，cmd中运行会忽略掉job title & job company\n因为Unicode类型的字符中，包含了一些无法转换为GBK编码的一些字符\n建议在sublime或其他环境中运行\r\n')
 	
-	keyword = 'python 开发'
+	keyword = 'python实习'
 	#keyword = input('input keyword: ')
 	getLaGouJobs(keyword, first = 'true', i = 1, results = True)
 	existDB()
