@@ -15,11 +15,14 @@
 * [xicidaili.com](#xicidailicom)
 * [gatherproxy.com](#gatherproxycom)
 
-## Books info
-* [douban](#douban) 
+## Music
+* [app-echo.com](#app-echocom)
 
 ## Picture
 * [unsplash.com](#unsplashcom)
+
+## Books info
+* [douban](#douban) 
 
 ## Novel
 * [sto.cc](#stocc)
@@ -56,6 +59,7 @@ preview
  ```
  在51job.com 查询工作信息，复制链接，爬虫运行后黏贴链接
  ![search](https://github.com/Chloe-Y/somePythonSpider/blob/master/demo/search.gif)
+ 
  爬虫下来的csv文件，需要整理一下
  ![csv file](https://github.com/Chloe-Y/somePythonSpider/blob/master/demo/data.gif)
  
@@ -84,18 +88,21 @@ preview, i used pillow to merge this two pictures
 ![gatherProxy](https://github.com/Chloe-Y/somePythonSpider/blob/master/demo/getproxy.png)
  
  ------
-## douban
-:books: 输入标签或者关键词爬取豆瓣的图书信息，ID, 书名，作者，简介等
+ ## app-echo.com
+ :notes: 登陆个人账号获取 user id 然后爬取用户喜欢的音乐多进程下载歌曲
  
 ### *steps* 
- ```
- cd douban
- python doubanBook.py
- # enter books keyword
- # enter the number of books you want to save
- ```
- query doubanbooks database
- ![querybooks](https://github.com/Chloe-Y/somePythonSpider/blob/master/demo/querybooks.png)
+```
+cd music
+python echoDownload.py
+# input your user id
+# start download
+```
+输入user id 下载
+![echo](https://github.com/Chloe-Y/somePythonSpider/blob/master/demo/echo.png)
+
+下载如下
+![echoDL](https://github.com/Chloe-Y/somePythonSpider/blob/master/demo/echoDL.png)
  
  ------
 ## unsplash.com
@@ -112,6 +119,20 @@ python unsplash.py
 preview
 ![unsplash](https://github.com/Chloe-Y/somePythonSpider/blob/master/demo/unsplash.gif)
 
+ ------
+## douban
+:books: 输入标签或者关键词爬取豆瓣的图书信息，ID, 书名，作者，简介等
+ 
+### *steps* 
+ ```
+ cd douban
+ python doubanBook.py
+ # enter books keyword
+ # enter the number of books you want to save
+ ```
+ query doubanbooks database
+ ![querybooks](https://github.com/Chloe-Y/somePythonSpider/blob/master/demo/querybooks.png)
+ 
 ------
 ## sto.cc
 :cyclone:爬取sto.cc网站的小说，需要使用代理连接
